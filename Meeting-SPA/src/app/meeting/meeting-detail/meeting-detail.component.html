@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-4">
+  <form #meetingForm = "ngForm" id="meetingForm">
+  <h2 class="text-center text-primary">Meeting</h2>
+  <hr>
+  <div class="form-group">
+    <input type="text" formControlName="meetingsubject" [ngClass]="{'is-invalid' : meetingForm.get('meetingsubject').errors 
+    && meetingForm.get('meetingsubject').touched}" class="form-control" placeholder="Meeting Subject">
+    <div class="invalid-feedback"> Please enter a Meeting Subject</div>
+  </div>
+  <div class="form-group">
+    <select name="attendeeID" class="form-control" multiple>
+        <option value="0">-Select-</option>
+        <option *ngFor="let item of attendee" value="{{item.id}}">{{item.attendeeName}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea name="meetingagenda" formControlName="meetingagenda" class="formcontrol" rows="6" placeholder="Meeting Agenda"
+    style="width:100%;" [ngClass]="{'is-invalid' : meetingForm.get('meetingagenda').errors 
+    && meetingForm.get('meetingagenda').touched}"></textarea>
+    <div class="invalid-feedback"> Please enter a Meeting Agenda</div>
+  </div>
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': meetingForm.get('meetingdate').errors && meetingForm.get('meetingdate').touched}" class="form-control"
+      placeholder="Meeting Date" formControlName="meetingdate"  type="text" bsDatepicker [bsConfig]="bsConfig" >
+    <div class="invalid-feedback">Meeting Date is required</div>
+  </div>
+  <div class="form-group text-center mt-3">
+    <button class="btn btn-success mr-2" type="submit">Submit</button>
+    <button class="btn btn-default" type="button">Clear</button>
+</div>
+</form>
+</div>
+  </div>
+</div>
